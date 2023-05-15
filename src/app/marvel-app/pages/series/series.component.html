@@ -1,0 +1,28 @@
+<ng-template #cargando> </ng-template>
+
+<div *ngIf="comics; else cargando">
+  <ion-card color="primary">
+    <ion-card-header>
+      <ion-card-title>{{ nombreSerie }}</ion-card-title>
+      <ion-card-subtitle *ngIf="rating != ''"
+        >Calificación: {{ rating }}</ion-card-subtitle
+      >
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item *ngFor="let comic of comics" (click)="navegarComic(comic)">
+          <ion-thumbnail slot="start">
+            <img alt="" [src]="rutaImagen" />
+          </ion-thumbnail>
+          <ion-label>{{ comic.name }}</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-grid>
+    <ion-row class="ion-justify-content-center">
+      <ion-button (click)="goBack()" expand="block">Volver</ion-button>
+    </ion-row>
+  </ion-grid>
+</div>

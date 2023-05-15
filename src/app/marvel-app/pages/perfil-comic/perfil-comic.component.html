@@ -1,0 +1,58 @@
+<div *ngIf="resultadoComic">
+  <ion-grid>
+    <ion-row class="ion-justify-content-center">
+      <ion-img [src]="rutaImagen" alt=""></ion-img>
+    </ion-row>
+    <ion-row class="ion-justify-content-center">
+      <ion-text class="ion-text-center">
+        <h1>{{ resultadoComic.data.results[0].title | uppercase }}</h1>
+      </ion-text>
+    </ion-row>
+    <ion-row>
+      <ion-text>
+        <p>
+          {{ resultadoComic.data.results[0].description }}
+        </p>
+      </ion-text>
+    </ion-row>
+  </ion-grid>
+
+  <ion-card *ngIf="resultadoComic.data.results[0].creators.available != 0">
+    <ion-card-header>
+      <ion-card-subtitle>Creado por:</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item
+          *ngFor="let item of resultadoComic.data.results[0].creators.items"
+        >
+          <ion-label
+            >{{ item.name }} - {{ item.role | traductorPipe }}</ion-label
+          >
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card *ngIf="resultadoComic.data.results[0].characters.available != 0">
+    <ion-card-header>
+      <ion-card-subtitle>Protagonizado por:</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item
+          *ngFor="let item of resultadoComic.data.results[0].characters.items"
+          (click)="redirectHeroe(item.name)"
+        >
+          <ion-label>{{ item.name }}</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-grid>
+    <ion-row class="ion-justify-content-center">
+      <ion-button (click)="goBack()" expand="block">Volver</ion-button>
+    </ion-row>
+  </ion-grid>
+</div>

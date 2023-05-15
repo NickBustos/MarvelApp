@@ -1,0 +1,52 @@
+<ion-grid>
+  <ion-row *ngFor="let heroe of datos" class="ion-justify-content-center">
+    <ion-col class="ion-text-center">
+      <ion-card>
+        <img
+          alt="Silhouette of mountains"
+          [src]=" 'https://i.annihil.us/u/prod/marvel/i/mg' + heroe.rutaImagen + '.' + heroe.thumbnail.extension"
+        />
+        <ion-card-header>
+          <ion-card-title>{{ heroe.name }}</ion-card-title>
+          <ion-card-subtitle>#{{ heroe.id }}</ion-card-subtitle>
+        </ion-card-header>
+
+        <ion-card-content>
+          {{ heroe.description }}
+        </ion-card-content>
+        <ion-button [routerLink]="['/heroe/', heroe.id]" fill="clear"
+          >Ver más</ion-button
+        >
+      </ion-card>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+<ion-grid class="botonNav">
+  <ion-row position="fixed" class="ion-text-center">
+    <ion-col>
+      <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+        <ion-fab-button>
+          <ion-icon name="chevron-back-circle-outline"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+
+      <ion-button
+        *ngIf="mostrarBotonAnterior()"
+        (click)="passPage(-1)"
+        [routerLink]="['/heroes/', numPage - 1]"
+      >
+        <ion-icon name="chevron-back-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-col>
+
+    <ion-col>
+      <ion-button
+        *ngIf="mostrarBotonAvanzar()"
+        (click)="passPage(+1)"
+        [routerLink]="['/heroes/', numPage + 1]"
+      >
+        <ion-icon name="chevron-forward-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-col>
+  </ion-row>
+</ion-grid>

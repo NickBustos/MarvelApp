@@ -1,0 +1,14 @@
+/* .linea {
+  margin-bottom: 0.5px solid grey;
+} */
+
+.nombreHeroe {
+  border-bottom: 3px solid #f0131e;
+  margin: 0 auto;
+  width: 75%;
+}
+
+ion-button {
+  --background: #f0131e;
+  --color: white;
+}

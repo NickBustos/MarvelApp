@@ -1,0 +1,54 @@
+<ion-menu color="fondoColor" contentId="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Inicio</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-searchbar
+    animated="true"
+    (ionInput)="searchHeroe($event)"
+    [debounce]="10"
+    search-icon="search-circle"
+    placeholder="Buscar superheroe.."
+  >
+  </ion-searchbar>
+  <ion-list *ngIf="comprobarInput()">
+    <ion-menu-toggle auto-hide="false">
+      <ion-item
+        color="medium"
+        *ngFor="let result of resultados"
+        (click)="onSelectedOption(result)"
+      >
+        <ion-label>{{ result.name }}</ion-label>
+      </ion-item>
+    </ion-menu-toggle>
+  </ion-list>
+  <div>
+    <ion-list>
+      <ion-menu-toggle auto-hide="false">
+        <ion-item
+          *ngFor="let item of sideNavItems"
+          [routerLink]="item.url"
+          lines="none"
+        >
+          {{ item.label }}</ion-item
+        >
+      </ion-menu-toggle>
+    </ion-list>
+  </div>
+  <ion-content class="ion-padding"> </ion-content>
+</ion-menu>
+
+<div class="ion-page" id="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <!-- <ion-title>Menu</ion-title> -->
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding">
+    <router-outlet></router-outlet>
+  </ion-content>
+</div>

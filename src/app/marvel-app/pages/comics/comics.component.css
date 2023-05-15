@@ -1,0 +1,11 @@
+ion-button {
+  --background: #f0131e;
+  --color: white;
+}
+
+.botonNav {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
