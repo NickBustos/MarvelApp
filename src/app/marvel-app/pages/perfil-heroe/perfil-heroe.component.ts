@@ -44,7 +44,8 @@ export class PerfilHeroeComponent implements OnInit {
       this.cargarSeries(this.idHeroe, this.limit, this.offset);
       this.marvelService.getHeroe(this.idHeroe).subscribe((resp) => {
         this.rutaImagen =
-          resp.data.results[0].thumbnail.path +
+          'https://i.annihil.us/u/prod/marvel/i/mg' +
+          resp.data.results[0].thumbnail.path.split('mg')[1] +
           '.' +
           resp.data.results[0].thumbnail.extension;
 

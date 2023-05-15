@@ -21,6 +21,7 @@ export interface Result {
   title: string;
   description: string;
   resourceURI: string;
+  rutaImagen: string;
   type: Type;
   modified: Modified;
   thumbnail: Thumbnail;

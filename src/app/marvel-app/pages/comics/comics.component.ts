@@ -42,7 +42,12 @@ export class ComicsComponent implements OnInit {
    */
   loadComics(num: number) {
     this.marvelService.getComics(num).subscribe((resp: Comics) => {
+      let i: number = 0;
       this.datos = resp.data.results;
+      this.datos.forEach((element) => {
+        this.datos[i].rutaImagen = element.thumbnail.path.split('mg')[1];
+        i++;
+      });
     });
   }
 

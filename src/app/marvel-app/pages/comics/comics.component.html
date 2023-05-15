@@ -3,8 +3,13 @@
     <ion-col class="ion-text-center">
       <ion-card>
         <img
-          alt="Silhouette of mountains"
-          [src]="comic.thumbnail.path + '.' + comic.thumbnail.extension"
+          alt=""
+          [src]="
+            'https://i.annihil.us/u/prod/marvel/i/mg' +
+            comic.rutaImagen +
+            '.' +
+            comic.thumbnail.extension
+          "
         />
         <ion-card-header>
           <ion-card-title>{{ comic.title }}</ion-card-title>

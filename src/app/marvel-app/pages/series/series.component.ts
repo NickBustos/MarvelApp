@@ -3,7 +3,6 @@ import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MarvelService } from '../../services/peticiones.service';
 import { Item } from '../../interfaces/series.interface';
-import { Series } from '../../interfaces/comic.interface';
 
 @Component({
   selector: 'app-series',
@@ -30,11 +29,14 @@ export class SeriesComponent {
       this.marveService.getSeriesbyId(resp['id']).subscribe((resp) => {
         this.rating = resp.data.results[0].rating;
         this.rutaImagen =
-          resp.data.results[0].thumbnail.path +
+          'https://i.annihil.us/u/prod/marvel/i/mg' +
+          resp.data.results[0].thumbnail.path.split('mg')[1] +
           '.' +
           resp.data.results[0].thumbnail.extension;
         this.nombreSerie = resp.data.results[0].title;
         this.comics = resp.data.results[0].comics.items;
+
+        console.log(resp.data.results[0]);
       });
     });
   }

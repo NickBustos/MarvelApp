@@ -3,8 +3,13 @@
     <ion-col class="ion-text-center">
       <ion-card>
         <img
-          alt="Silhouette of mountains"
-          [src]=" 'https://i.annihil.us/u/prod/marvel/i/mg' + heroe.rutaImagen + '.' + heroe.thumbnail.extension"
+          alt=""
+          [src]="
+            'https://i.annihil.us/u/prod/marvel/i/mg' +
+            heroe.rutaImagen +
+            '.' +
+            heroe.thumbnail.extension
+          "
         />
         <ion-card-header>
           <ion-card-title>{{ heroe.name }}</ion-card-title>
